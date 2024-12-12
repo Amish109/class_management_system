@@ -1,0 +1,15 @@
+module.exports=(app)=>{
+    require("./admission")(app)
+    require("./attendences")(app)
+    require("./branches")(app)
+    require("./courses")(app)
+    require("./exam_types")(app)
+    require("./exams")(app)
+    require("./exams")(app)
+    require("./exams_students")(app)
+    require("./staffs")(app)
+    require("./students")(app)
+    require("./students_attendences")(app)
+    require("./subjects")(app)
+    require("./topics")(app)
+}
