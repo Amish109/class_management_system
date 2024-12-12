@@ -3,3 +3,6 @@ echo. > admission.js & echo. > students_attendences.js & echo. > attendences.js 
 
 data.rows in pg and
 data.toArray() in mongodb
+
+
+

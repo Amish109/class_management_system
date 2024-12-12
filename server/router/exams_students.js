@@ -1,22 +1,22 @@
 module.exports=function(app){
     app.post("/api/v1/exams_students",function(req,res){
-        const x = require("../src/admission/create");
+        const x = require("../src/exams_students/create");
         x.main(req,res);
     })
     app.delete("/api/v1/exams_students/:id",function(req,res){
-        const x = require("../src/admission/delete");
+        const x = require("../src/exams_students/delete");
         x.main(req,res);
     })
     app.get("/api/v1/exams_students/:id",function(req,res){
-        const x = require("../src/admission/get_by_id");
+        const x = require("../src/exams_students/get_by_id");
         x.main(req,res);
     })
     app.get("/api/v1/exams_students",function(req,res){
-        const x = require("../src/admission/read");
+        const x = require("../src/exams_students/read");
         x.main(req,res);
     })
     app.put("/api/v1/exams_students",function(req,res){
-        const x = require("../src/admission/update");
+        const x = require("../src/exams_students/update");
         x.main(req,res);
     })
     }

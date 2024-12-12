@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS students(
 )
 
 CREATE TABLE IF NOT EXISTS branches(
-    id INT PRIMARY KEY ,
+    id SERIAL PRIMARY KEY ,
     branch_name VARCHAR(255),
     address VARCHAR(255)
 )

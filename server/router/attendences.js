@@ -1,22 +1,22 @@
 module.exports=function(app){
     app.post("/api/v1/attendance",function(req,res){
-        const x = require("../src/admission/create");
+        const x = require("../src/attendences/create");
         x.main(req,res);
     })
     app.delete("/api/v1/attendance/:id",function(req,res){
-        const x = require("../src/admission/delete");
+        const x = require("../src/attendences/delete");
         x.main(req,res);
     })
     app.get("/api/v1/attendance/:id",function(req,res){
-        const x = require("../src/admission/get_by_id");
+        const x = require("../src/attendences/get_by_id");
         x.main(req,res);
     })
     app.get("/api/v1/attendance",function(req,res){
-        const x = require("../src/admission/read");
+        const x = require("../src/attendences/read");
         x.main(req,res);
     })
     app.put("/api/v1/attendance",function(req,res){
-        const x = require("../src/admission/update");
+        const x = require("../src/attendences/update");
         x.main(req,res);
     })
     

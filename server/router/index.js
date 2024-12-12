@@ -12,4 +12,5 @@ module.exports=(app)=>{
     require("./students_attendences")(app)
     require("./subjects")(app)
     require("./topics")(app)
+    require("./auth")(app)
 }
