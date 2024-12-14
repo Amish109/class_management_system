@@ -115,3 +115,9 @@ CREATE TABLE IF NOT EXISTS branches(
     branch_name VARCHAR(255),
     address VARCHAR(255)
 )
+
+
+
+SELECT * FROM branches
+
+DELETE FROM branches WHERE branch_name is null

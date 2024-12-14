@@ -15,6 +15,7 @@ import Topics from "../screens/Topics";
 import Staffs from "../screens/Staffs";
 import Students from "../screens/Students";
 import Branches from "../screens/Branches";
+import BranchForm from "../components/branch_form/BranchForm";
   export const router = createBrowserRouter([
     {
       path: "/",
@@ -67,6 +68,12 @@ import Branches from "../screens/Branches";
         {
           path: "/branches",
           element:<Branches/>,
+          // children:[
+          //   {
+          //     path:"edit",
+          //     element:<BranchForm/>
+          //   }
+          // ]
         },
       ],
     },

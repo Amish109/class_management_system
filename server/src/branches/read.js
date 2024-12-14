@@ -1,14 +1,24 @@
 const main =async(req,res)=>{
     const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
     const client=await postgre_sql_connector();
-    client.query("SELECT * FROM branches",[],function(error,result){
+    client.query("SELECT * FROM branches",[],async function(error,result){
         if(error){
-            console.log("error",error);
-            res.send(error.toString());
+        res.json({
+            success:false,
+            error:error.toString(),
+            data:[],
+            response_message:"Error"
+        });
         } else{
-            console.log(result?.rows);
-            res.send(result?.rows);
+           res.json({
+                success:true,
+                error:null,
+                data:result.rows,
+                response_message:"Data Fetched successfully"
+            });
         }
+        await client.end();
+
     });
     }
     module.exports={

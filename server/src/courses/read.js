@@ -3,11 +3,19 @@ const main =async(req,res)=>{
     const client=await postgre_sql_connector();
     client.query("SELECT * FROM courses",[],function(error,result){
         if(error){
-            console.log("error",error);
-            res.send(error.toString());
+        res.json({
+            success:false,
+            error:error.toString(),
+            data:[],
+            response_message:"Error"
+        });
         } else{
-            console.log(result?.rows);
-            res.send(result?.rows);
+           res.json({
+                success:true,
+                error:null,
+                data:result.rows,
+                response_message:"Data Fetched successfully"
+            });
         }
     });
     }

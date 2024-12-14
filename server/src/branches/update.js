@@ -8,15 +8,24 @@ const main =async(req,res)=>{
     })
     console.log("update_data new",update_data.join(", "))
     const client=await postgre_sql_connector();
-    client.query(`UPDATE branches SET ${update_data.join(", ")} WHERE id=$1`,[id],function(error,result){
+    client.query(`UPDATE branches SET ${update_data.join(", ")} WHERE id=$1`,[id],async function(error,result){
         if(error){
-            console.log("error",error);
-            res.send(error.toString());
+        res.json({
+            success:false,
+            error:error.toString(),
+            data:[],
+            response_message:"Error"
+        });
         } else{
-            console.log("result",result);
-            res.send("Updated successfully");
+           res.json({
+                success:true,
+                error:null,
+                data:[],
+                response_message:"Updated successfully"
+            });
     
         }
+        await client.end();
     });
     }
     module.exports={
