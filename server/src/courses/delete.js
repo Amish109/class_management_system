@@ -2,7 +2,7 @@ const main =async(req,res)=>{
 const {id}=req.params;
 const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
 const client=await postgre_sql_connector();
-client.query("DELETE FROM courses WHERE id=$1",[id],function(error,result){
+client.query("DELETE FROM courses WHERE id=$1",[id],async function(error,result){
     if(error){
         res.json({
             success:false,
@@ -17,7 +17,8 @@ client.query("DELETE FROM courses WHERE id=$1",[id],function(error,result){
             data:[],
             response_message:"Deleted successfully"
         });
-    }
+    } 
+await client.end();
 });
 }
 module.exports={

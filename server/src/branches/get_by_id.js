@@ -21,6 +21,7 @@ const main =async(req,res)=>{
         }
         await client.end();
 
+   await client.end();
     });
     }
     module.exports={

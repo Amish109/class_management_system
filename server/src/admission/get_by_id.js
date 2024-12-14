@@ -2,7 +2,7 @@ const main =async(req,res)=>{
     const {id}=req.params;
     const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
     const client=await postgre_sql_connector();
-    client.query("SELECT * FROM admission WHERE id=$1",[id],function(error,result){
+    client.query("SELECT * FROM admission WHERE id=$1",[id],async function(error,result){
         if(error){
         res.json({
             success:false,
@@ -19,6 +19,8 @@ const main =async(req,res)=>{
             });
     
         }
+        await client.end();
+   //await client.end();
     });
     }
     module.exports={

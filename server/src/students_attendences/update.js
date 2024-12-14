@@ -7,7 +7,7 @@ const main =async(req,res)=>{
         update_data.push(`${element}='${req.body[element]}'`)
     })
     const client=await postgre_sql_connector();
-    client.query(`UPDATE students_attendences SET ${update_data.join(", ")} WHERE id=$1`,[id],function(error,result){
+    client.query(`UPDATE students_attendences SET ${update_data.join(", ")} WHERE id=$1`,[id],async function(error,result){
         if(error){
         res.json({
             success:false,
@@ -23,6 +23,7 @@ const main =async(req,res)=>{
                 response_message:"Updated successfully"
             });
         }
+   await client.end();
     });
     }
     module.exports={

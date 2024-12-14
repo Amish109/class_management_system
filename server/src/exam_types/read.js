@@ -1,7 +1,7 @@
 const main =async(req,res)=>{
     const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
     const client=await postgre_sql_connector();
-    client.query("SELECT * FROM exam_types",[],function(error,result){
+    client.query("SELECT * FROM exam_types",[],async function(error,result){
         if(error){
         res.json({
             success:false,
@@ -17,6 +17,7 @@ const main =async(req,res)=>{
                 response_message:"Data Fetched successfully"
             });
         }
+   await client.end();
     });
     }
     module.exports={

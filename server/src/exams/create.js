@@ -2,7 +2,7 @@ const main =async(req,res)=>{
     const {name,subject,date,exam_type}=req.body;
 const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
 const client=await postgre_sql_connector();
-client.query("INSERT INTO exams(name,subject,date,exam_type) VALUES($1,$2,$3,$4)",[name,subject,date,exam_type],function(error,result){
+client.query("INSERT INTO exams(name,subject,date,exam_type) VALUES($1,$2,$3,$4)",[name,subject,date,exam_type],async function(error,result){
    if(error){
         res.json({
             success:false,
@@ -19,6 +19,7 @@ client.query("INSERT INTO exams(name,subject,date,exam_type) VALUES($1,$2,$3,$4)
         });
         // res.send("Created successfully");
     }
+await client.end();
 });
 }
 module.exports={
