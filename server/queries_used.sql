@@ -53,15 +53,15 @@ CREATE TABLE exam_types(
 )
 
 CREATE TABLE courses (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-	duration DATE
-  -- course_id INT,
-    -- FOREIGN KEY (course_id) REFERENCES public.course(course_id)
+	duration VARCHAR(255)
 )
 
+-- DROP TABLE courses CASCADE
+
 CREATE TABLE subjects (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
 	duration DATE,
   course_id INT,
@@ -75,7 +75,7 @@ CREATE TABLE topics (
   subject_id INT,
     FOREIGN KEY (subject_id) REFERENCES public.subjects(id)
 )
-
+-- ==============================================================================
 CREATE TABLE IF NOT EXISTS staffs(
  	id SERIAL PRIMARY KEY,
     full_name VARCHAR(255),
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS staffs(
     gender VARCHAR(255) CHECK(gender IN('male','female')),
     mobile_number Numeric,
     email VARCHAR(255),
-    roll_no Numeric,
+    -- roll_no Numeric,
     age Numeric,
     dob DATE,
     city VARCHAR(255),
@@ -92,6 +92,9 @@ CREATE TABLE IF NOT EXISTS staffs(
     branch INT,
     FOREIGN KEY(branch) REFERENCES branches(id)
 )
+SELECT * FROM staffs;
+ALTER TABLE staffs DROP COLUMN roll_no;
+-- ==============================================================================
 
 CREATE TABLE IF NOT EXISTS students(
     id SERIAL PRIMARY KEY,

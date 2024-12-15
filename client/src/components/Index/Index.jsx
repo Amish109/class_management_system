@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteEntry } from '../../function';
 import useMasterDataAPICall from '../../custom_hooks/useMasterDataAPICall';
 
-const Index = ({ data, title,onBtnClick,handleEditView }) => {
+const Index = ({ data, title,onBtnClick,handleEditView,CB }) => {
   const { branchApiCall } = useMasterDataAPICall();
   // const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +18,7 @@ const Index = ({ data, title,onBtnClick,handleEditView }) => {
       </div>
       {
         (!data || data.length === 0)?<div>No data available</div> :
-        <div className='w-full index-table overflow-auto mt-5 max-h-[91%]'>
+        <div className='w-full index-table overflow-auto mt-5 max-h-[91%] scrollbar-hide'>
           <table className='w-full align-middle border border-black'>
             <thead className='text-center bg-blue-200 sticky top-0 outline outline-1 scrollbar-hide'>
               <tr className=''>
@@ -36,7 +36,7 @@ const Index = ({ data, title,onBtnClick,handleEditView }) => {
                   ))}
                   <td className='  p-2 flex justify-evenly '>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"Edit")}}>Edit</button>
-                      <button type='button' onClick={()=>{deleteEntry(item?.id,"v1/branches",branchApiCall)}}>Delete</button>
+                      <button type='button' onClick={()=>{deleteEntry(item?.id,`v1${location.pathname}`,CB)}}>Delete</button>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"View")}}>View</button>
                   </td>
                 </tr>

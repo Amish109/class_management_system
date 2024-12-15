@@ -10,7 +10,7 @@ const StudentsForm = ({ title,id=null, onClose ,setTitle }) => {
   const [full_name, setFullName] = useState("");
   const [branch, setBranch] = useState("");
   const [address, setAddress] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
   const [mobile_number, setMobileNumber] = useState("");
   const [email, setEmail] = useState("");
   const [roll_no, setRollNo] = useState("");
@@ -177,6 +177,7 @@ const StudentsForm = ({ title,id=null, onClose ,setTitle }) => {
           onChange={(event) => setBranch(event.target.value)} 
           disabled={title=="View"}
         >
+          <option value="">Select Branch</option>
           {
             branches.map((element,index)=>{
               return <option value={element.id}>{element.branch_name}</option>

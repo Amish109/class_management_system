@@ -30,7 +30,7 @@ useEffect(()=>{
 },[])
   return (
     <div>
-      <Index data={branchData} title={"Branches"} onBtnClick={handleCreate}  handleEditView={handleEditView}/>
+      <Index data={branchData} title={"Branches"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={branchApiCall}/>
       <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
         <BranchForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
       </CmsModal>

@@ -4,7 +4,7 @@ import { apiCall } from "../function";
 
 
 const useMasterDataAPICall=()=>{
-const{branchData,setBranchData,studentsData,setStudentsData} =useContext(ClassmanagementContext);
+const{setBranchData,setStudentsData,setStaffsData,setCoursesData,setSubjectsData} =useContext(ClassmanagementContext);
  const branchApiCall=async()=>{
     const data =await apiCall("v1/branches");
     console.log("Test data",data)
@@ -15,10 +15,28 @@ const{branchData,setBranchData,studentsData,setStudentsData} =useContext(Classma
     console.log("Test data",data)
     setStudentsData(data?.data);
 }
+const staffsApiCall=async()=>{
+    const data =await apiCall("v1/staffs");
+    console.log("Test data",data)
+    setStaffsData(data?.data);
+}
+const coursesApiCall=async()=>{
+    const data =await apiCall("v1/courses");
+    console.log("Test data",data)
+    setCoursesData(data?.data);
+}
+const subjectsApiCall =async()=>{
+    const data =await apiCall("v1/subjects");
+    console.log("Test data",data)
+    setSubjectsData(data?.data);
+}
     return{
         // branchData,
         branchApiCall,
-        studentsApiCall
+        studentsApiCall,
+        staffsApiCall,
+        coursesApiCall,
+        subjectsApiCall 
     }
 }
 
