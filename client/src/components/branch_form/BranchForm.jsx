@@ -43,6 +43,9 @@ const BranchForm = ({ title,id=null, onClose ,setTitle }) => {
   };
 
   useEffect(()=>{
+    if(!id){
+      return;
+    }
     (async()=>{
     const data =await apiCall(`v1/branches/${id}`);
     console.log("Test data",data?.data);

@@ -15,7 +15,7 @@ module.exports=function(app){
         const x = require("../src/students/read");
         x.main(req,res);
     })
-    app.put("/api/v1/students",function(req,res){
+    app.put("/api/v1/students/:id",function(req,res){
         const x = require("../src/students/update");
         x.main(req,res);
     })

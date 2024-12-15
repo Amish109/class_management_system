@@ -6,9 +6,10 @@ import CmsModal from './components/cmsModal/CmsModal'
 import { ClassmanagementContext } from './context/useClassManagementContext'
 const App = () => {
   const[branchData,setBranchData]=useState([]);
+  const[studentsData,setStudentsData]=useState([]);
 
   return (
-    <ClassmanagementContext.Provider value={{branchData,setBranchData}}>
+    <ClassmanagementContext.Provider value={{branchData,setBranchData,studentsData,setStudentsData}}>
       <div className='relative'>
       <div className='w-full flex h-screen'>
         <div className='w-[20%] h-screen bg-orange-300 overflow-y-auto scrollbar-hide'>

@@ -34,7 +34,7 @@ const Index = ({ data, title,onBtnClick,handleEditView }) => {
                   {Object.keys(item).map((key, cellIndex) => (
                   cellIndex!==0 && <td key={`table_body_${rowIndex}_${cellIndex}`} className='border-x border-black p-2'>{item[key]}</td>
                   ))}
-                  <td className='  p-2 flex justify-evenly'>
+                  <td className='  p-2 flex justify-evenly '>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"Edit")}}>Edit</button>
                       <button type='button' onClick={()=>{deleteEntry(item?.id,"v1/branches",branchApiCall)}}>Delete</button>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"View")}}>View</button>
