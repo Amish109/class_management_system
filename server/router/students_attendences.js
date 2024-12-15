@@ -15,7 +15,7 @@ module.exports=function(app){
         const x = require("../src/students_attendences/read");
         x.main(req,res);
     })
-    app.put("/api/v1/students_attendences",function(req,res){
+    app.put("/api/v1/students_attendences/:id",function(req,res){
         const x = require("../src/students_attendences/update");
         x.main(req,res);
     })

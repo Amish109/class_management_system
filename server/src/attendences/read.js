@@ -1,7 +1,7 @@
 const main =async(req,res)=>{
     const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
     const client=await postgre_sql_connector();
-    client.query("SELECT * FROM attendance",[],async function(error,result){
+    client.query("SELECT * FROM attendences",[],async function(error,result){
         if(error){
         res.json({
             success:false,

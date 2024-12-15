@@ -12,7 +12,7 @@ CREATE TABLE admission(
 )
 
 CREATE TABLE students_attendences(
-	id INT PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	-- date DATE DEFAULT CURRENT_DATE,
 	attendence_id INT,
 	student_id INT,
@@ -22,19 +22,20 @@ CREATE TABLE students_attendences(
 )
 
 CREATE TABLE attendences(
-	id INT PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	date DATE DEFAULT CURRENT_DATE,
 	start_time TIME DEFAULT NULL,
 	end_time TIME DEFAULT NULL,
-	subject_id INT DEFAULT NULL
+	subject_id INT DEFAULT NULL,
+	FOREIGN KEY(subject_id) REFERENCES public.subjects(id)
 )
 
 CREATE TABLE exams_students(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
 	marks INT DEFAULT 0,
-	student_attendance INT,
-	FOREIGN KEY(student_attendance) REFERENCES public.students_attendences(id)
+	student_attendence INT,
+	FOREIGN KEY(student_attendence) REFERENCES public.students_attendences(id)
 )
 
 CREATE TABLE exams(
@@ -43,7 +44,7 @@ CREATE TABLE exams(
 	subject INT,
 	date DATE DEFAULT NULL,
 	exam_type INT,
-	FOREIGN KEY(subject) REFERENCES public.students(id) ,
+	FOREIGN KEY(subject) REFERENCES public.subjects(id) ,
 	FOREIGN KEY(exam_type) REFERENCES public.exam_types(id) 
 )
 
@@ -69,10 +70,10 @@ CREATE TABLE subjects (
 )
 
 CREATE TABLE topics (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-	duration DATE,
-  subject_id INT,
+	duration VARCHAR(255),
+    subject_id INT,
     FOREIGN KEY (subject_id) REFERENCES public.subjects(id)
 )
 -- ==============================================================================
@@ -124,3 +125,5 @@ CREATE TABLE IF NOT EXISTS branches(
 SELECT * FROM branches
 
 DELETE FROM branches WHERE branch_name is null
+
+SELECT exams.id,exams.name,exams.date,subjects.name AS subject,exam_types.name AS "exam type" FROM exams LEFT JOIN subjects ON exams.subject=subjects.id LEFT JOIN exam_types ON exams.exam_type = exam_types.id;

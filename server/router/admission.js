@@ -15,7 +15,7 @@ app.get("/api/v1/addmission",function(req,res){
     const x = require("../src/admission/read");
     x.main(req,res);
 })
-app.put("/api/v1/addmission",function(req,res){
+app.put("/api/v1/addmission/:id",function(req,res){
     const x = require("../src/admission/update");
     x.main(req,res);
 })

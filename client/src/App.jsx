@@ -10,9 +10,17 @@ const App = () => {
   const[staffsData,setStaffsData]=useState([]);
   const[coursesData,setCoursesData]=useState([]);
   const[subjectsData,setSubjectsData]=useState([]);
+  const[topicsData,setTopicsData]=useState([]);
+
+  const[examTypesData,setExamTypesData]=useState([]);
+  const[examsData,setExamsData]=useState([]);
+  const[examsStudentsData,setExamsStudentsData]=useState([]);
+  const[attendenceData,setAttendenceData]=useState([]);
+  const[studentsAttendenceData,setStudentsAttendenceData]=useState([]);
+  const[admissionData,setAdmissionData]=useState([]);
 
   return (
-    <ClassmanagementContext.Provider value={{branchData,setBranchData,studentsData,setStudentsData,staffsData,setStaffsData,coursesData,setCoursesData,subjectsData,setSubjectsData}}>
+    <ClassmanagementContext.Provider value={{branchData,setBranchData,studentsData,setStudentsData,staffsData,setStaffsData,coursesData,setCoursesData,subjectsData,setSubjectsData,topicsData,setTopicsData,examTypesData,setExamTypesData,examsData,setExamsData,examsStudentsData,setExamsStudentsData,attendenceData,setAttendenceData,studentsAttendenceData,setStudentsAttendenceData,admissionData,setAdmissionData}}>
       <div className='relative'>
       <div className='w-full flex h-screen'>
         <div className='w-[20%] h-screen bg-orange-300 overflow-y-auto scrollbar-hide'>

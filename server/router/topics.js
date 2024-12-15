@@ -16,7 +16,7 @@ module.exports=function(app){
         const x = require("../src/topics/read");
         x.main(req,res);
     })
-    app.put("/api/v1/topics",function(req,res){
+    app.put("/api/v1/topics/:id",function(req,res){
         const x = require("../src/topics/update");
         x.main(req,res);
     })
