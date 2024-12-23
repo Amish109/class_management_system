@@ -19,7 +19,7 @@ const main =async(req,res)=>{
            res.json({
                 success:true,
                 error:null,
-                data:[],
+                data:result,
                 response_message:"Updated successfully"
             });
         }

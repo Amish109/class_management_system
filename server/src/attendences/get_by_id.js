@@ -17,7 +17,6 @@ const main =async(req,res)=>{
                 data:result.rows,
                 response_message:"Data Fetched successfully"
             });
-    
         }
    await client.end();
     });
