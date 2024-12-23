@@ -54,7 +54,12 @@ const attendenceApiCall =async()=>{
     setAttendenceData(data?.data);
 }
 const studentsAttendenceApiCall =async()=>{
-    const data =await apiCall("v1/attendences");
+    const data =await apiCall("v1/students_attendences");
+    console.log("Test data",data)
+    setStudentsAttendenceData(data?.data);
+}
+const studentsAttendenceApiCallId =async(id)=>{
+    const data =await apiCall("v1/students_attendences?attendenceId="+id);
     console.log("Test data",data)
     setStudentsAttendenceData(data?.data);
 }
@@ -75,7 +80,8 @@ const admissionApiCall =async()=>{
         attendenceApiCall,
         studentsAttendenceApiCall,
         admissionApiCall,
-        examTypesApiCall
+        examTypesApiCall,
+        studentsAttendenceApiCallId
     }
 }
 

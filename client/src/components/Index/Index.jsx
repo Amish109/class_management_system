@@ -1,11 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteEntry } from '../../function';
-import useMasterDataAPICall from '../../custom_hooks/useMasterDataAPICall';
-
-const Index = ({ data, title,onBtnClick,handleEditView,CB }) => {
-  const { branchApiCall } = useMasterDataAPICall();
-  // const navigate = useNavigate();
+const Index = ({ data, title,onBtnClick,handleEditView,CB,redirectToPage=null}) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const headers = data!=null && data.length>0?Object.keys(data[0]):[];
   return (
@@ -32,7 +29,18 @@ const Index = ({ data, title,onBtnClick,handleEditView,CB }) => {
               {data.map((item, rowIndex) => (
                 <tr key={`table_row_${rowIndex}`} className='border border-t-0 border-black'>
                   {Object.keys(item).map((key, cellIndex) => (
-                  cellIndex!==0 && <td key={`table_body_${rowIndex}_${cellIndex}`} className='border-x border-black p-2'>{item[key]}</td>
+                  cellIndex!==0 && (
+                    (cellIndex==1 && redirectToPage) ? 
+                    <td key={`table_body_${rowIndex}_${cellIndex}`} onClick={()=>{
+                      navigate(`${location.pathname}/${redirectToPage}/${item?.id}`);
+                    }}  className='border-x border-black p-2 cursor-pointer'>
+                      {item[key]}
+                    </td>
+                    :  
+                    <td key={`table_body_${rowIndex}_${cellIndex}`}  className='border-x border-black p-2'>
+                      {item[key]}
+                    </td>
+                  )
                   ))}
                   <td className='  p-2 flex justify-evenly '>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"Edit")}}>Edit</button>

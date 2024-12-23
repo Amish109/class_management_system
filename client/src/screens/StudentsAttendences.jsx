@@ -3,18 +3,19 @@ import Index from '../components/Index/Index'
 import useMasterDataAPICall from '../custom_hooks/useMasterDataAPICall'
 import CmsModal from '../components/cmsModal/CmsModal'
 import { ClassmanagementContext } from '../context/useClassManagementContext'
-import ExamTypesForm from '../components/exam_types_form/ExamTypesForm.jsx'
-import StudentsAttendencesForm from '../components/attendence_form/AttendencesForm.jsx'
+import StudentsAttendenceForm from '../components/students_attendence/StudentsAttendenceForm'
+import { useParams } from 'react-router-dom'
 
 const StudentsAttendences = () => {
-const{StudentsAttendencesData} =useContext(ClassmanagementContext);
+const{studentsAttendenceData} =useContext(ClassmanagementContext);
 const [isvisible,setIsVisible] = useState(false);
 const [title,setTitle] = useState("Create");
 const [id,setId] = useState(null);
+const {attendenceId} =useParams();
 const onClose=()=>{
   setIsVisible(false)
 }
-const {attendenceApiCall} = useMasterDataAPICall();
+const {studentsAttendenceApiCallId} = useMasterDataAPICall();
 const handleCreate =()=>{
   setId(null);
   setTitle("Create");
@@ -25,14 +26,17 @@ const handleEditView =(id,title)=>{
   setTitle(title);
   setIsVisible(true);
 }
+const callBackFunction=()=>{
+  studentsAttendenceApiCallId(attendenceId);
+}
 useEffect(()=>{
-  attendenceApiCall();
+  studentsAttendenceApiCallId(attendenceId);
 },[])
   return (
     <div>
-      <Index data={attendenceData} title={"Attendence"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={attendenceApiCall}/>
+      <Index data={studentsAttendenceData} title={"Students Attendence"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={callBackFunction}/>
       <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
-        <AttendencesForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
+        <StudentsAttendenceForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
       </CmsModal>
     </div>
   )
@@ -40,13 +44,13 @@ useEffect(()=>{
 
 export default StudentsAttendences
 
-
 // import React from 'react'
+// import StudentsAttendenceForm from '../components/students_attendence/StudentsAttendenceForm'
 
 // const StudentsAttendences = () => {
 //   return (
 //     <div>
-//       StudentsAttendences
+//       <StudentsAttendenceForm/>
 //     </div>
 //   )
 // }

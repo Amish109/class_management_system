@@ -37,5 +37,4 @@ export const deleteEntry =async(id,url,CB)=>{
     const data = await apiDelete(`${url}/${id}`);
     alert(data?.response_message);
     CB();
-
 }
