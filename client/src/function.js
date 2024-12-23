@@ -11,7 +11,7 @@ export const apiCallPutPost =async(url,obj_data,method="POST") => {
         method,
         headers: {
             'Content-Type': 'application/json'
-        },  
+        },
         body: JSON.stringify(obj_data)
     });
     const data=await response.json();
