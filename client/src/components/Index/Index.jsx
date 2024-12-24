@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteEntry } from '../../function';
-const Index = ({ data, title,onBtnClick,handleEditView,CB,redirectToPage=null}) => {
+const Index = ({ data, title,onBtnClick,handleEditView,CB,redirectToPage=null,pathOfAPI=null}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const headers = data!=null && data.length>0?Object.keys(data[0]):[];
@@ -44,7 +44,7 @@ const Index = ({ data, title,onBtnClick,handleEditView,CB,redirectToPage=null}) 
                   ))}
                   <td className='  p-2 flex justify-evenly '>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"Edit")}}>Edit</button>
-                      <button type='button' onClick={()=>{deleteEntry(item?.id,`v1${location.pathname}`,CB)}}>Delete</button>
+                      <button type='button' onClick={()=>{deleteEntry(item?.id,`${pathOfAPI?pathOfAPI:"v1"+location.pathname}`,CB)}}>Delete</button>
                       <button type='button' onClick={()=>{handleEditView(item?.id,"View")}}>View</button>
                   </td>
                 </tr>

@@ -30,6 +30,7 @@ export const apiDelete =async(url) => {
 }
 
 export const deleteEntry =async(id,url,CB)=>{
+    console.log("deleteEntry",`${url}/${id}`)
     const confirm_value=confirm("Are you sure you want to delete?");
     if(!confirm_value){
         return;

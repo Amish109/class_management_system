@@ -124,18 +124,3 @@ CREATE TABLE IF NOT EXISTS staffs(
     branch INT,
     FOREIGN KEY(branch) REFERENCES branches(id)
 );
-SELECT * FROM staffs;
-ALTER TABLE staffs DROP COLUMN roll_no;
--- ==============================================================================
-
-
-
-
-
-
-
-SELECT * FROM branches
-
-DELETE FROM branches WHERE branch_name is null
-
-SELECT exams.id,exams.name,exams.date,subjects.name AS subject,exam_types.name AS "exam type" FROM exams LEFT JOIN subjects ON exams.subject=subjects.id LEFT JOIN exam_types ON exams.exam_type = exam_types.id;
