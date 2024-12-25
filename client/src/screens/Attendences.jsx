@@ -31,10 +31,10 @@ useEffect(()=>{
   return (
     <div>
       <Index data={attendenceData} title={"Attendence"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={attendenceApiCall} redirectToPage={"students_attendences"}/>
-      <div>
+      {/* <div>
         Test
         <Outlet/>
-      </div>
+      </div> */}
       <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
         <AttendencesForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
       </CmsModal>

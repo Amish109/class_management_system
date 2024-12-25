@@ -44,7 +44,6 @@ CREATE TABLE admission(
 	FOREIGN KEY(student_id) REFERENCES public.students(id),
 	FOREIGN KEY(course_id) REFERENCES public.courses(id)
 );
-
 CREATE TABLE subjects (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
@@ -52,7 +51,6 @@ CREATE TABLE subjects (
   course_id INT,
     FOREIGN KEY (course_id) REFERENCES public.courses(id)
 );
-
 CREATE TABLE attendences(
 	id SERIAL PRIMARY KEY,
 	date DATE DEFAULT CURRENT_DATE,
@@ -61,7 +59,6 @@ CREATE TABLE attendences(
 	-- subject_id INT DEFAULT NULL,
 	FOREIGN KEY(subject_id) REFERENCES public.subjects(id)
 );
-
 CREATE TABLE students_attendences(
 	id SERIAL PRIMARY KEY,
 	-- date DATE DEFAULT CURRENT_DATE,
@@ -84,7 +81,7 @@ CREATE TABLE exams(
 
 CREATE TABLE exams_students(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(255),
+	-- name VARCHAR(255),
 	marks INT DEFAULT 0,
     exam_id INT ,
 	student_id INT,

@@ -38,6 +38,10 @@ import BranchForm from "../components/branch_form/BranchForm";
           element:<StudentsAttendences/>
         },
         {
+          path: "exams/exams_students/:examId",
+          element:<ExamsStudents/>
+        },
+        {
           path: "/exams_students",
           element:<ExamsStudents/>,
         },

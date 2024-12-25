@@ -30,7 +30,7 @@ useEffect(()=>{
 },[])
   return (
     <div>
-      <Index data={examsData} title={"Exams"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={examsApiCall}/>
+      <Index data={examsData} title={"Exams"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={examsApiCall} redirectToPage={"exams_students"}/>
       <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
         <ExamsForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
       </CmsModal>

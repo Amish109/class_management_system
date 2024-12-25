@@ -34,7 +34,7 @@ useEffect(()=>{
 },[])
   return (
     <div>
-      <Index data={studentsAttendenceData} title={"Students Attendence"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={callBackFunction} pathOfAPI={"v1/students_attendences"}/>
+      <Index data={studentsAttendenceData} title={"Students Attendence"} onBtnClick={handleCreate} handleEditView={handleEditView} CB={callBackFunction} pathOfAPI={"v1/students_attendences"}/>
       <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
         <StudentsAttendenceForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
       </CmsModal>

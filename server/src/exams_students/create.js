@@ -1,8 +1,8 @@
 const main =async(req,res)=>{
-    const {name,marks,student_attendance}=req.body;
+    const {marks,exam_id,student_id}=req.body;
 const {postgre_sql_connector} = require("../_base/postgre_sql_connector"); 
 const client=await postgre_sql_connector();
-client.query("INSERT INTO exams_students(name,marks,student_attendance) VALUES($1,$2,$3)",[name,marks,student_attendance],async function(error,result){
+client.query("INSERT INTO exams_students(marks,exam_id,student_id) VALUES($1,$2,$3)",[marks,exam_id,student_id],async function(error,result){
    if(error){
         res.json({
             success:false,
