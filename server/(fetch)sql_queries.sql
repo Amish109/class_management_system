@@ -26,3 +26,8 @@ LEFT JOIN students ON
 filtered_attendences.student_id=students.id LEFT JOIN 
 attendences ON
 filtered_attendences.attendence_id=attendences.id;
+
+-- ================================================================================================================
+INSERT INTO users(user_name,password,role) VALUES(
+	'mishi_tiwari_test',7208726849,'staff'
+)

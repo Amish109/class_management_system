@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS students(
     state VARCHAR(255),
     pincode Numeric,
     branch INT,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY(branch) REFERENCES branches(id)
 );
 
@@ -119,5 +121,21 @@ CREATE TABLE IF NOT EXISTS staffs(
     state VARCHAR(255),
     pincode Numeric,
     branch INT,
+    user_id INT,
+    FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(branch) REFERENCES branches(id)
 );
+
+-- ================================================================================
+CREATE TABLE IF NOT EXISTS users(
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255),
+    password VARCHAR(255),
+    role VARCHAR(255)
+)
+
+-- ALTER TABLE students ADD COLUMN user_id INT;
+-- ALTER TABLE students ADD CONSTRAINT fk_user  FOREIGN KEY (user_id) REFERENCES users(id);
+
+-- ALTER TABLE staffs ADD COLUMN user_id INT;
+-- ALTER TABLE staffs ADD CONSTRAINT fk_staffs FOREIGN KEY (user_id) REFERENCES users(id);
