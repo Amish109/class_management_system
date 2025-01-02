@@ -1,9 +1,14 @@
 const jwt=require("jsonwebtoken");
-const { JWT_SECRET } = require("../../env_config");
+const { JWT_SECRET } = require("./env_config");
 const  get_jwt_token=(data)=>{
+   try {
     var token = jwt.sign(data, JWT_SECRET,{expiresIn:"2 days"});
     console.log("Ruchi",token);
     return token;
+   } catch (error) {
+    console.log("Error in generating jwt",error)
+    return false
+   }
 }
 const  verif_jwt_token=(token)=>{
     console.log("token",token)
