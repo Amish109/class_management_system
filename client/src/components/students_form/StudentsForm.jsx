@@ -5,7 +5,7 @@ import useMasterDataAPICall from '../../custom_hooks/useMasterDataAPICall';
 import { apiCall, apiCallPutPost } from '../../function';
 import Select from '../Input/select/select';
 
-const StudentsForm = ({ title,id=null, onClose ,setTitle }) => {
+const StudentsForm = ({ title,id=null, onClose ,setTitle,showEdit=true }) => {
   const { studentsApiCall } = useMasterDataAPICall();
   const [full_name, setFullName] = useState("");
   const [branch, setBranch] = useState("");
@@ -195,7 +195,7 @@ const StudentsForm = ({ title,id=null, onClose ,setTitle }) => {
       <div className='button-submit flex justify-center mt-10'>
         {
           title=="View" ?
-          <button className='px-4 py-2 bg-blue-600 text-white active:bg-blue-400 rounded-md'>Edit</button> 
+          showEdit &&<button className='px-4 py-2 bg-blue-600 text-white active:bg-blue-400 rounded-md'>Edit</button> 
           :
           <button className='px-4 py-2 bg-blue-600 text-white active:bg-blue-400 rounded-md'>Submit</button>
         }

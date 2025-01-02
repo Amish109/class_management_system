@@ -26,15 +26,31 @@ const handleEditView =(id,title)=>{
   setTitle(title);
   setIsVisible(true);
 }
+
+const userData = JSON.parse(localStorage.getItem("user_data"));
+const isAdmin = userData?.role=="admin";
 useEffect(()=>{
-  studentsApiCall();
+  if(isAdmin){
+    studentsApiCall();
+  } else{
+    setIsVisible(true);
+    setId(userData?.data_id);
+    setTitle("View");
+  }
 },[])
+
   return (
     <div>
       <Index data={studentsData} title={"Students"} onBtnClick={handleCreate}  handleEditView={handleEditView} CB={studentsApiCall}/>
-      <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
+      {
+        isAdmin ?
+        <CmsModal isvisible={isvisible} title={title}  onClose={onClose}>
         <StudentsForm title={title} id={id} onClose={onClose} setTitle={setTitle}/>
-      </CmsModal>
+      </CmsModal> :
+      <div className='p-10'>
+        <StudentsForm title={title} id={id} onClose={onClose} setTitle={setTitle} showEdit={false}/>
+      </div>
+      }
     </div>
   )
 }

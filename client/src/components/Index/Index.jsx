@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteEntry } from '../../function';
 const Index = ({ data, title,onBtnClick,handleEditView,CB,redirectToPage=null,pathOfAPI=null}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const headers = data!=null && data.length>0?Object.keys(data[0]):[];
+
+  const userData = JSON.parse(localStorage.getItem("user_data"));
+  if(userData?.role=="student" || userData?.role=="staff"){
+    return null;
+  }
+  
   return (
-    <div className='p-10 h-screen w-full'>
+    <div className='p-10 w-full'>
       <div>
         <h3>{title} Index</h3>
       </div>

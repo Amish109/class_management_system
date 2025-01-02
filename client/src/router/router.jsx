@@ -1,6 +1,5 @@
 import {
     createBrowserRouter,
-    RouterProvider,
   } from "react-router-dom";
 import App from "../App";
 import Addmission from "../screens/Admission";
@@ -16,21 +15,26 @@ import Staffs from "../screens/Staffs";
 import Students from "../screens/Students";
 import Branches from "../screens/Branches";
 import BranchForm from "../components/branch_form/BranchForm";
+import Login from "../components/login/Login";
   export const router = createBrowserRouter([
     {
       path: "/",
       element:<App/>,
       children: [
         {
-          path: "/admission",
+          path: "",
+          element:<h1 className="flex justify-center items-center">Class Management System</h1>,
+        },
+        {
+          path: "admission",
           element:<Addmission/>,
         },
         {
-          path: "/students_attendences",
+          path: "students_attendences",
           element:<StudentsAttendences/>,
         },
         {
-          path: "/attendences",
+          path: "attendences",
           element:<Attendences/>,
         },
         {
@@ -42,39 +46,39 @@ import BranchForm from "../components/branch_form/BranchForm";
           element:<ExamsStudents/>
         },
         {
-          path: "/exams_students",
+          path: "exams_students",
           element:<ExamsStudents/>,
         },
         {
-          path: "/exams",
+          path: "exams",
           element:<Exams/>,
         },
         {
-          path: "/exam_types",
+          path: "exam_types",
           element:<ExamTypes/>,
         },
         {
-          path: "/courses",
+          path: "courses",
           element:<Courses/>,
         },
         {
-          path: "/subjects",
+          path: "subjects",
           element:<Subjects/>,
         },
         {
-          path: "/topics",
+          path: "topics",
           element:<Topics/>,
         },
         {
-          path: "/staffs",
+          path: "staffs",
           element:<Staffs/>,
         },
         {
-          path: "/students",
+          path: "students",
           element:<Students/>,
         },
         {
-          path: "/branches",
+          path: "branches",
           element:<Branches/>,
           // children:[
           //   {
@@ -85,5 +89,9 @@ import BranchForm from "../components/branch_form/BranchForm";
         },
       ],
     },
+    {
+      path:"login",
+      element:<Login/>
+    }
   ]);
 

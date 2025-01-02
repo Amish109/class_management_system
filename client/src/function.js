@@ -39,3 +39,17 @@ export const deleteEntry =async(id,url,CB)=>{
     alert(data?.response_message);
     CB();
 }
+
+export const login =async(user_name,password)=>{
+    const response =await fetch(`${url_header}/api/v1/login`,{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user_name,password
+        })
+    });
+    const data=await response.json();
+    return data;
+}

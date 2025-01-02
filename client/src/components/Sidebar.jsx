@@ -1,8 +1,17 @@
-import React from 'react'
-import { route_links } from '../constants/routes_links'
+import React, { useEffect, useState } from 'react'
+// import { route_links } from '../constants/routes_links'
 import { Link } from 'react-router-dom'
+import { other_links, staffs_links, students_links } from '../constants/routes_links';
 
 const Sidebar = () => {
+  const[route_links,setRouteLinks] = useState([]);
+  useEffect(()=>{
+    const userData = JSON.parse(localStorage.getItem("user_data"));
+    const isAdmin = userData?.role=="admin";
+    const isStudent = userData?.role=="student";
+    const isStaff = userData?.role=="staff";
+    setRouteLinks(isAdmin?[...other_links,...students_links,...staffs_links]:isStudent?students_links:staffs_links);
+  },[])
   return (
     <div>
       {
